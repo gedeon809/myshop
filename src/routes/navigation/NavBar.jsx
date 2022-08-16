@@ -4,11 +4,15 @@ import './navbar.scss';
 
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
 import { UserContext } from '../../contexts/UserContext';
+import { CartContext } from '../../contexts/CartContext';
+
 import { signOutUser } from '../../utils/firebase/firebaseUtils';
+import CardIcon from '../../components/card-icon/CardIcon';
+import CardDropdown from '../../components/card-dropdown/CardDropdown';
 
 const NavBar = () => {
   const { currentUser } = useContext(UserContext);
-
+  const { isCardOpen } = useContext(CartContext);
   return (
     <Fragment>
       <div className="navigation">
@@ -28,7 +32,9 @@ const NavBar = () => {
               SIGN IN
             </Link>
           )}
+          <CardIcon />
         </div>
+        {isCardOpen && <CardDropdown />}
       </div>
       <Outlet />
     </Fragment>
