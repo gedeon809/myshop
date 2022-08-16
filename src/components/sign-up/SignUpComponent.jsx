@@ -19,7 +19,6 @@ const SignUpComponent = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   // destructing the four value in order for me to use them somewhere in my code
   const { displayName, email, password, confirmPassword } = formFields;
-
   const resetForm = () => {
     setFormFields(defaultFormFields);
   };
@@ -36,6 +35,7 @@ const SignUpComponent = () => {
         email,
         password
       );
+
       await createUserDoc(user, { displayName });
       resetForm();
     } catch (error) {
