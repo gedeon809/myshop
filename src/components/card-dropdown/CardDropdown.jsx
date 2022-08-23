@@ -7,9 +7,11 @@ import './carddropdown.scss';
 // useNavigate will allow me to get the nav function
 const CardDropdown = () => {
   const navigate = useNavigate();
+  const { isCardOpen, setIsCardOpen } = useContext(CartContext);
 
   const goToCheckoutHandler = () => {
     navigate('/checkout');
+    setIsCardOpen(!isCardOpen);
   };
   const { cartItems } = useContext(CartContext);
   return (
